@@ -14,7 +14,7 @@ const content = [
 ];
 
 export default function App() {
-  const { useInput, useTabs, useTitle, useClick } = hooks;
+  const { useInput, useTabs, useTitle, useClick, useHover } = hooks;
 
   // useInput
   const maxLen = (value) => value.length <= 10;
@@ -33,6 +33,11 @@ export default function App() {
   //useClick
   const changeButton = useClick(() => {
     changeButton.current.innerText = Math.floor(Math.random() * 100);
+  });
+
+  //useHover
+  const changeButtonHover = useHover(() => {
+    changeButtonHover.current.style.backgroundColor = "red";
   });
 
   return (
@@ -64,6 +69,12 @@ export default function App() {
           useClick: 클릭 이벤트를 자유롭게!
           <button ref={changeButton}>
             click this button to change button name
+          </button>
+        </li>
+        <li>
+          useHover: mouseover 이벤트를 자유롭게!
+          <button ref={changeButtonHover}>
+            mouseover this button to change button color
           </button>
         </li>
       </ol>
