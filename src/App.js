@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import hooks from "./hooks";
 import "./styles.css";
+import usePreventLeave from "./hooks/usePreventLeave";
 
 const content = [
   {
@@ -14,7 +15,15 @@ const content = [
 ];
 
 export default function App() {
-  const { useInput, useTabs, useTitle, useClick, useHover, useConfirm } = hooks;
+  const {
+    useInput,
+    useTabs,
+    useTitle,
+    useClick,
+    useHover,
+    useConfirm,
+    usePreventLeave,
+  } = hooks;
 
   // useInput
   const maxLen = (value) => value.length <= 10;
@@ -44,6 +53,9 @@ export default function App() {
   const confirm = () => console.log("Hello World");
   const reject = () => console.log("Bye world");
   const confirmAction = useConfirm("Are you sure?", confirm, reject);
+
+  //usePreventLeave
+  const { enablePrevent, disablePrevent } = usePreventLeave();
 
   return (
     <div className="App">
@@ -92,6 +104,14 @@ export default function App() {
           useConfirm: 확인팝업 띄우기
           <div>
             <button onClick={confirmAction}>확인팝업 활성화</button>
+          </div>
+        </li>
+        <li>
+          usePreventLeave: 브라우저 창 이탈 막기 (새로고침, 뒤로 가기, 브라우저
+          닫기, form submit 등)
+          <div>
+            <button onClick={enablePrevent}>이탈 막기 활성화</button>
+            <button onClick={disablePrevent}>이탈 막기 비활성화</button>
           </div>
         </li>
       </ol>
