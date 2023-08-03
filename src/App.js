@@ -14,7 +14,7 @@ const content = [
 ];
 
 export default function App() {
-  const { useInput, useTabs, useTitle, useClick, useHover } = hooks;
+  const { useInput, useTabs, useTitle, useClick, useHover, useConfirm } = hooks;
 
   // useInput
   const maxLen = (value) => value.length <= 10;
@@ -40,6 +40,11 @@ export default function App() {
     changeButtonHover.current.style.backgroundColor = "red";
   });
 
+  //useConfirm
+  const confirm = () => console.log("Hello World");
+  const reject = () => console.log("Bye world");
+  const confirmAction = useConfirm("Are you sure?", confirm, reject);
+
   return (
     <div className="App">
       <h1>Welcome, Try seHooks.</h1>
@@ -60,22 +65,34 @@ export default function App() {
         </li>
         <li>
           useTitle: 원하는 텍스트로 탭 타이틀을 변경하세요.
-          <input
-            placeholder="Title"
-            onChange={(e) => setUserTitle(e.target.value)}
-          />
+          <div>
+            <input
+              placeholder="Title"
+              onChange={(e) => setUserTitle(e.target.value)}
+            />
+          </div>
         </li>
         <li>
           useClick: 클릭 이벤트를 자유롭게!
-          <button ref={changeButton}>
-            click this button to change button name
-          </button>
+          <div>
+            <button ref={changeButton}>
+              click this button to change button name
+            </button>
+          </div>
         </li>
         <li>
           useHover: mouseover 이벤트를 자유롭게!
-          <button ref={changeButtonHover}>
-            mouseover this button to change button color
-          </button>
+          <div>
+            <button ref={changeButtonHover}>
+              mouseover this button to change button color
+            </button>
+          </div>
+        </li>
+        <li>
+          useConfirm: 확인팝업 띄우기
+          <div>
+            <button onClick={confirmAction}>확인팝업 활성화</button>
+          </div>
         </li>
       </ol>
     </div>
