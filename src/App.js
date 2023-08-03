@@ -14,7 +14,7 @@ const content = [
 ];
 
 export default function App() {
-  const { useInput, useTabs, useTitle } = hooks;
+  const { useInput, useTabs, useTitle, useClick } = hooks;
 
   // useInput
   const maxLen = (value) => value.length <= 10;
@@ -29,6 +29,11 @@ export default function App() {
   useEffect(() => {
     setTimeout(() => titleUpdater(userTitle), 500);
   }, [userTitle]);
+
+  //useClick
+  const changeButton = useClick(() => {
+    changeButton.current.innerText = Math.floor(Math.random() * 100);
+  });
 
   return (
     <div className="App">
@@ -54,6 +59,12 @@ export default function App() {
             placeholder="Title"
             onChange={(e) => setUserTitle(e.target.value)}
           />
+        </li>
+        <li>
+          useClick: 클릭 이벤트를 자유롭게!
+          <button ref={changeButton}>
+            click this button to change button name
+          </button>
         </li>
       </ol>
     </div>
