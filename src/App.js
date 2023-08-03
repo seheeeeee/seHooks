@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import hooks from "./hooks";
 import "./styles.css";
 
@@ -14,12 +14,21 @@ const content = [
 ];
 
 export default function App() {
-  const { useInput, useTabs } = hooks;
+  const { useInput, useTabs, useTitle } = hooks;
 
+  // useInput
   const maxLen = (value) => value.length <= 10;
-  const name = useInput("Ms.sehee", maxLen);
+  const name = useInput("", maxLen);
 
+  // useTabs
   const { currentItem, changeItem } = useTabs(0, content);
+
+  //useTitle
+  const [userTitle, setUserTitle] = useState("");
+  const titleUpdater = useTitle(userTitle);
+  useEffect(() => {
+    setTimeout(() => titleUpdater(userTitle), 500);
+  }, [userTitle]);
 
   return (
     <div className="App">
@@ -38,6 +47,13 @@ export default function App() {
             ))}
             <div>{currentItem.content}</div>
           </div>
+        </li>
+        <li>
+          useTitle: 원하는 텍스트로 탭 타이틀을 변경하세요.
+          <input
+            placeholder="Title"
+            onChange={(e) => setUserTitle(e.target.value)}
+          />
         </li>
       </ol>
     </div>
