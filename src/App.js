@@ -27,6 +27,7 @@ export default function App() {
     useBeforeLeave,
     useFadeIn,
     useNetwork,
+    useScroll,
   } = hooks;
 
   // useInput
@@ -77,8 +78,11 @@ export default function App() {
   };
   const isOnline = useNetwork(handleChangeNetwork);
 
+  //useScroll
+  const { x: scrollX, y: scrollY } = useScroll();
+
   return (
-    <div className="App">
+    <div className="App" style={{ height: "1000vh" }}>
       <h1>Welcome, Try seHooks.</h1>
       <ol>
         <li>
@@ -143,6 +147,10 @@ export default function App() {
         <li>
           useNetwork: 네트워크 연결 상태에 따른 이벤트 실행
           <div>현재 네트워크 연결 상태: {isOnline ? "Online" : "Offline"}</div>
+        </li>
+        <li>
+          useScroll: 스크롤 값에 따른 이벤트 실행
+          <div>현재 스크롤값: {`x: ${scrollX}, y: ${scrollY}`}</div>
         </li>
       </ol>
     </div>

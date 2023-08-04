@@ -8,6 +8,7 @@ import usePreventLeave from "./usePreventLeave";
 import useBeforeLeave from "./useBeforeLeave";
 import useFadeIn from "./useFadeIn";
 import useNetwork from "./useNetwork";
+import useScroll from "./useScroll";
 
 export default {
   useInput,
@@ -20,4 +21,5 @@ export default {
   useBeforeLeave,
   useFadeIn,
   useNetwork,
+  useScroll,
 };
