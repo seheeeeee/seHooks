@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import hooks from "./hooks";
 import "./styles.css";
 import usePreventLeave from "./hooks/usePreventLeave";
+import useFadeIn from "./hooks/useFadeIn";
 
 const content = [
   {
@@ -24,6 +25,7 @@ export default function App() {
     useConfirm,
     usePreventLeave,
     useBeforeLeave,
+    useFadeIn,
   } = hooks;
 
   // useInput
@@ -63,6 +65,10 @@ export default function App() {
     alert("화면을 이탈했습니다.");
   };
   useBeforeLeave(onBefore);
+
+  //useFadeIn
+  const fadeDiv = useFadeIn(1, 3);
+  const fadeP = useFadeIn(4, 2);
 
   return (
     <div className="App">
@@ -122,6 +128,11 @@ export default function App() {
           </div>
         </li>
         <li>useBeforeLeave: 마우스가 브라우저 영역 이탈시 특정 이벤트 발생</li>
+        <li>
+          useFadeIn: FadeIn 커스텀 애니메이션 설정
+          <div {...fadeDiv}>duration: 1, delay: 3</div>
+          <p {...fadeP}>duration: 4, delay: 2</p>
+        </li>
       </ol>
     </div>
   );
