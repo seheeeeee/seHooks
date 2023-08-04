@@ -23,6 +23,7 @@ export default function App() {
     useHover,
     useConfirm,
     usePreventLeave,
+    useBeforeLeave,
   } = hooks;
 
   // useInput
@@ -56,6 +57,12 @@ export default function App() {
 
   //usePreventLeave
   const { enablePrevent, disablePrevent } = usePreventLeave();
+
+  //useBeforeLeave
+  const onBefore = () => {
+    alert("화면을 이탈했습니다.");
+  };
+  useBeforeLeave(onBefore);
 
   return (
     <div className="App">
@@ -114,6 +121,7 @@ export default function App() {
             <button onClick={disablePrevent}>이탈 막기 비활성화</button>
           </div>
         </li>
+        <li>useBeforeLeave: 마우스가 브라우저 영역 이탈시 특정 이벤트 발생</li>
       </ol>
     </div>
   );

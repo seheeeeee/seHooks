@@ -5,6 +5,7 @@ import useClick from "./useClick";
 import useHover from "./useHover";
 import useConfirm from "./useConfirm";
 import usePreventLeave from "./usePreventLeave";
+import useBeforeLeave from "./useBeforeLeave";
 
 export default {
   useInput,
@@ -14,4 +15,5 @@ export default {
   useHover,
   useConfirm,
   usePreventLeave,
+  useBeforeLeave,
 };
