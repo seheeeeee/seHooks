@@ -26,6 +26,7 @@ export default function App() {
     usePreventLeave,
     useBeforeLeave,
     useFadeIn,
+    useNetwork,
   } = hooks;
 
   // useInput
@@ -69,6 +70,12 @@ export default function App() {
   //useFadeIn
   const fadeDiv = useFadeIn(1, 3);
   const fadeP = useFadeIn(4, 2);
+
+  //useNetwork
+  const handleChangeNetwork = (online) => {
+    console.log(online ? "online" : "offline");
+  };
+  const isOnline = useNetwork(handleChangeNetwork);
 
   return (
     <div className="App">
@@ -132,6 +139,10 @@ export default function App() {
           useFadeIn: FadeIn 커스텀 애니메이션 설정
           <div {...fadeDiv}>duration: 1, delay: 3</div>
           <p {...fadeP}>duration: 4, delay: 2</p>
+        </li>
+        <li>
+          useNetwork: 네트워크 연결 상태에 따른 이벤트 실행
+          <div>현재 네트워크 연결 상태: {isOnline ? "Online" : "Offline"}</div>
         </li>
       </ol>
     </div>

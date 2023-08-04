@@ -7,6 +7,7 @@ import useConfirm from "./useConfirm";
 import usePreventLeave from "./usePreventLeave";
 import useBeforeLeave from "./useBeforeLeave";
 import useFadeIn from "./useFadeIn";
+import useNetwork from "./useNetwork";
 
 export default {
   useInput,
@@ -18,4 +19,5 @@ export default {
   usePreventLeave,
   useBeforeLeave,
   useFadeIn,
+  useNetwork,
 };
