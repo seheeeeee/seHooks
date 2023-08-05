@@ -28,6 +28,7 @@ export default function App() {
     useFadeIn,
     useNetwork,
     useScroll,
+    useNotification,
   } = hooks;
 
   // useInput
@@ -80,6 +81,9 @@ export default function App() {
 
   //useScroll
   const { x: scrollX, y: scrollY } = useScroll();
+
+  //useNotification
+  const triggerNotif = useNotification("seHooks", { body: "안녕하세요." });
 
   return (
     <div className="App" style={{ height: "1000vh" }}>
@@ -151,6 +155,12 @@ export default function App() {
         <li>
           useScroll: 스크롤 값에 따른 이벤트 실행
           <div>현재 스크롤값: {`x: ${scrollX}, y: ${scrollY}`}</div>
+        </li>
+        <li>
+          useNotification: 브라우저 푸시 알람 실행
+          <div>
+            <button onClick={triggerNotif}>알람보내기</button>
+          </div>
         </li>
       </ol>
     </div>
