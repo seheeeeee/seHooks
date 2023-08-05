@@ -2,3 +2,25 @@
   font-family: sans-serif;
   text-align: left;
 }
+li {
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+li > div {
+  width: 600px;
+  padding: 10px;
+  background-color: rgb(233, 233, 233);
+}
+button {
+  border: none;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 6px;
+  margin-right: 5px;
+  background-color: cadetblue;
+  color: #fff;
+  font-size: 12px;
+}
+button:hover {
+  background-color: green;
+}
