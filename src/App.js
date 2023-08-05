@@ -3,6 +3,7 @@ import hooks from "./hooks";
 import "./styles.css";
 import usePreventLeave from "./hooks/usePreventLeave";
 import useFadeIn from "./hooks/useFadeIn";
+import useAxios from "./hooks/useAxios";
 
 const content = [
   {
@@ -29,6 +30,7 @@ export default function App() {
     useNetwork,
     useScroll,
     useNotification,
+    useAxios,
   } = hooks;
 
   // useInput
@@ -84,6 +86,11 @@ export default function App() {
 
   //useNotification
   const triggerNotif = useNotification("seHooks", { body: "안녕하세요." });
+
+  //useAxios
+  const { loading, data, error, refetch } = useAxios({
+    url: "https://yts.mx/api/v2/list_movies.json",
+  });
 
   return (
     <div className="App" style={{ height: "1000vh" }}>
@@ -160,6 +167,13 @@ export default function App() {
           useNotification: 브라우저 푸시 알람 실행
           <div>
             <button onClick={triggerNotif}>알람보내기</button>
+          </div>
+        </li>
+        <li>
+          useAxios
+          <div>
+            {loading ? "loading" : "loaded"}
+            <button onClick={refetch}>refetch</button>
           </div>
         </li>
       </ol>

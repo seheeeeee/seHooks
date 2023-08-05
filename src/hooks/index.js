@@ -10,6 +10,7 @@ import useFadeIn from "./useFadeIn";
 import useNetwork from "./useNetwork";
 import useScroll from "./useScroll";
 import useNotification from "./useNotification";
+import useAxios from "./useAxios";
 
 export default {
   useInput,
@@ -24,4 +25,5 @@ export default {
   useNetwork,
   useScroll,
   useNotification,
+  useAxios,
 };
